@@ -461,6 +461,35 @@ small {
   box-shadow: 0 0 0 4px rgba(143, 191, 121, 0.18);
 }
 
+.live-dot::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(166, 220, 141, 0.9);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(1);
+  animation: availability-ping 4.2s ease-out infinite;
+}
+
+@keyframes availability-ping {
+  0%,
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scale(1);
+  }
+  76% { opacity: 0.65; }
+  88% {
+    opacity: 0;
+    transform: translateY(-50%) scale(3.2);
+  }
+}
+
 .aside-body { display: grid; gap: 14px; padding: 20px 22px 22px; }
 .aside-callout { margin: 0 0 2px; color: var(--copper); font-size: 11px; font-weight: 800; line-height: 1; text-transform: uppercase; letter-spacing: 0.18em; }
 .aside-contact { display: block; color: var(--ink); }
