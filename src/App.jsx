@@ -92,6 +92,7 @@ export default function Home() {
     gsap.registerPlugin(ScrollTrigger);
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobileLayout = window.matchMedia("(max-width: 1120px)").matches;
     if (reduceMotion) {
       if (jobsCompletedRef.current) jobsCompletedRef.current.textContent = "3,876";
       return;
@@ -100,9 +101,11 @@ export default function Home() {
     const ctx = gsap.context(() => {
       const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
-        .from(".site-header", { y: -28, opacity: 0, duration: 0.8 })
+        .from(".site-header", mobileLayout
+          ? { opacity: 0, duration: 0.8 }
+          : { y: -28, opacity: 0, duration: 0.8 })
         .from(".hero-kicker, .hero-copy, .hero-actions", { y: 22, opacity: 0, duration: 0.7, stagger: 0.1 }, "-=0.65")
-        .from(".hero-aside", { x: 32, opacity: 0, duration: 0.8 }, "-=0.65");
+        .from(".hero-aside", { [mobileLayout ? "y" : "x"]: mobileLayout ? 18 : 32, opacity: 0, duration: 0.8 }, "-=0.65");
 
       gsap.to(".hero-image", {
         scale: 1.08,

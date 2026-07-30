@@ -1,6 +1,6 @@
 # Kessler Electric website
 
-This is the standalone React + GSAP version of the Kessler Electric website. It does not use Next.js, Vinext, Cloudflare, or the OpenAI Sites workflow.
+This is the standalone React + GSAP version of the Kessler Electric website.
 
 ## Run locally
 
