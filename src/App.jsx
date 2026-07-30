@@ -188,9 +188,10 @@ export default function Home() {
           <a href="#work" onClick={closeMenu}>Our work</a>
         </nav>
 
-        <a href="mailto:hello@kesslerelectric.com?subject=Project estimate" className="header-cta" data-magnetic>
-          Get an estimate <span aria-hidden="true">↗</span>
-        </a>
+        <div className="header-cta" data-magnetic>
+          <span className="header-cta-label">Text 3869723393</span>
+          <span className="header-cta-spark" aria-hidden="true">✦</span>
+        </div>
 
         <button
           type="button"

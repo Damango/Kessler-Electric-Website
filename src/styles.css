@@ -158,24 +158,80 @@ small {
 }
 
 .header-cta {
+  position: relative;
+  isolation: isolate;
   justify-self: end;
   display: inline-flex;
   align-items: center;
   gap: 18px;
   min-height: 46px;
   padding: 0 18px;
+  overflow: hidden;
   color: #fff;
+  background: rgba(17, 15, 13, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: color 0.3s, background 0.3s, border-color 0.3s;
+  cursor: default;
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .header-cta:hover {
-  color: var(--ink);
-  background: var(--paper);
-  border-color: var(--paper);
+  color: #fff;
+  background: rgba(181, 111, 71, 0.22);
+  border-color: rgba(255, 226, 205, 0.9);
+  box-shadow: 0 0 22px rgba(207, 137, 96, 0.34), inset 0 0 18px rgba(255, 255, 255, 0.08);
+}
+
+.header-cta-label,
+.header-cta-spark {
+  position: relative;
+  z-index: 1;
+}
+
+.header-cta-spark {
+  color: var(--copper-bright);
+  font-size: 15px;
+  transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
+}
+
+.header-cta:hover .header-cta-spark {
+  color: #fff3e8;
+  text-shadow: 0 0 10px rgba(255, 225, 204, 0.95);
+  transform: rotate(22deg) scale(1.12);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header-cta::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: -65%;
+    bottom: -65%;
+    left: -38%;
+    width: 24%;
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 245, 235, 0.9), transparent);
+    pointer-events: none;
+    transform: translateX(-220%) skewX(-18deg);
+  }
+
+  .header-cta:hover::before {
+    animation: header-cta-glimmer 0.85s ease-out;
+  }
+}
+
+@keyframes header-cta-glimmer {
+  0% {
+    opacity: 0;
+    transform: translateX(-220%) skewX(-18deg);
+  }
+  28% { opacity: 0.9; }
+  100% {
+    opacity: 0;
+    transform: translateX(720%) skewX(-18deg);
+  }
 }
 
 .menu-toggle {
@@ -357,7 +413,7 @@ small {
 .hero-aside {
   position: absolute;
   right: clamp(14px, 2vw, 36px);
-  bottom: 116px;
+  bottom: 140px;
   width: clamp(270px, 22vw, 350px);
   color: var(--ink);
   background: rgba(244, 239, 230, 0.94);
