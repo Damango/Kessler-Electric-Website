@@ -224,7 +224,7 @@ export default function Home() {
 
           <aside className="hero-aside">
             <div className="aside-image-wrap">
-              <img src="/assets/electrician-at-panel.png" alt="Electrician working on a residential electrical panel" />
+              <img src="/assets/service-call-contact-card.jpg" alt="Electrician repairing a wall switch in a home" />
               <span className="live-dot">Available for new projects</span>
             </div>
             <div className="aside-body">
